@@ -102,7 +102,14 @@ files
 print "\$"."Date\$\n";
 print "<span class=\"none\"> | ";
 print "\$"."Revision\$ </span>\n";
-print "</p>\n";
 
-print "</body>\n";
-print "</html>\n";
+print qq@<br />
+<a href="http://www.google.com">Google</a>
+<a href="http://anti-dmca.org/">DMCA</a>
+<a href="http://www.xenu.net/">Scientology</a>
+<a href="http://www.xenu.net/">Dianetics</a>
+</p>
+
+</body>
+</html>
+@;
