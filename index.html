@@ -44,16 +44,16 @@ which then should be copied to a media, and then it can be mounted.
 
 <ul>
 <li>SourceForge: <a href="http://sourceforge.net/projects/romfs/">romfs project</a>
-    <a href="https://sourceforge.net/projects/romfs/">(via https)</a></li>
+    (same <a href="https://sourceforge.net/projects/romfs/">via HTTPS</a>)</li>
 <li>freshmeat: <a href="http://freshmeat.net/projects/genromfs/">genromfs project</a></li>
+<li>advogato: <a href="http://www.advogato.org/proj/genromfs/">genromfs project</a></li>
 <li>SourceForge: <a href="http://sourceforge.net/project/showfiles.php?group_id=2320">romfs releases</a>
     <ul>
     <li><a href="http://sourceforge.net/project/showfiles.php?group_id=2320&amp;release_id=71282">genromfs 0.5.1</a> is out (2002-01-22)</li>
-    <li>see also the <a href="#mirror">distribution mirror list</a></li>
+    <li>see also the <a href="#mirror">distribution mirror</a> list below</li>
     </ul>
 </li>
 <li><a href="http://sourceforge.net/cvs/?group_id=2320">romfs CVS tree</a> at SourceForge</li>
-<li>advogato: <a href="http://www.advogato.org/proj/genromfs/">genromfs project</a></li>
 </ul>
 
 <h1><a name="who" id="who" tabindex="3">Contact information</a></h1>
@@ -69,18 +69,98 @@ Sometimes, you can find
 <h1><a name="links" id="links" tabindex="4">Interesting links</a></h1>
 
 <p>
-Older releases of genromfs (0.1-0.3) are available at
-<a href="ftp://ftp.banki.hu/pub/Linux/local/">ftp://ftp.banki.hu/pub/Linux/local/</a>,
-the old distribution site.
+A working Linux system requires the kernel, and at least some
+programs running, which obviously needs a filesystem too.
+Most Linux disk filesystems are designed to be high
+performance, supporting all POSIX features, sometimes
+elaborate recovery on crashes (journaling), and that usually
+makes them quite heavy-weight, and thus often inappropriate
+in some special purposes.
+</p>
+
+<p>
+<em>romfs</em> makes two shortcuts: first, it's read-only, you can't
+simply <q>use</q> your disk if it's a <em>romfs</em> disk, you must
+build its image beforehand.  Second, it stores only the absolute
+minimum required from a filing system.  No modification dates,
+no unix permissions.  These all might sound as large drawbacks,
+but they are usually not.
+</p>
+
+<p>
+There are at least two main uses where <em>romfs</em> is almost
+perfect.
+</p>
+
+<ul>
+<li>
+The first is normal Linux systems, where you want
+some of the files to take the least possible space, and you can't
+afford or need compression.  This is typical in some boot
+procedures.  You can have your initial ram disks in <em>romfs</em>
+format, and even if you don't use it after the boot, its code
+is still very small to waste memory on.
+</li>
+<li>
+The other possible use when you need to use a Linux kernel on a
+device which has significant amount of read-only memory, and so
+it makes little sense to have a writable filesystem on it.  This
+is the case with many embedded systems.
+</li>
+</ul>
+
+<h2>Booting procedures with romfs</h2>
+
+<p>
+Some distributions make use of <em>romfs</em> during booting,
+or initial setup time, the most prominent are some PPC and Sparc systems.
 </p>
 
 <p>
 <a href="http://silo.sourceforge.net/">SILO</a>,
 the Sparc
-bootloader, supports boot disks with <em>romfs</em> on them.
+bootloader, also supports loading kernels from <em>romfs</em> boot
+disks.
 See also the
 <a href="http://freshmeat.net/projects/silo/">SILO project page at freshmeat</a>.
 </p>
+
+<h2>Embedded projects using romfs</h2>
+
+<p>
+<a href="http://www.uclinux.org/">uClinux</a>,
+the microcontroller Linux, is a port of the kernel, and
+selected user-space programs to capable, embedded
+processors, like some <q>smaller</q> Motorola m68k,
+and ARM systems.
+</p>
+
+<p>
+In turn, uClinux is used by the following projects/companies:
+</p>
+
+<ul>
+<li><a href="http://kiwi.sourceforge.net">Kiwi</a></li>
+<li><a href="http://www.lineo.com/">Lineo</a></li>
+<li><a href="http://www.leox.org/">The LEOX team</a></li>
+<li><a href="http://www.snapgear.com/">SnapGear</a></li>
+<li><a href="http://www.microtronix.com/">Microtronix</a></li>
+</ul>
+
+<p>
+<a href="http://www.siliconpenguin.com/">SiliconPenguin.com</a>
+contains a directory of linux related embedded projects.
+</p>
+
+<!--
+ http://www.scl.ameslab.gov/Projects/PPC_cluster/g4-howto/ramdisk.html
+ http://www.waste.org/~oxymoron/files/linux/romdisk-2.0.32-patch
+ http://www.ltsp.org/
+ ftp://ftp.ltc.com/pub/linux/patches/
+ proff's, kos allusion (dreamcast), console?
+-->
+
+<h2>Ports of romfs</h2>
 
 <p>
 <a href="http://www.sinor.ru/~mavir/">Vitaly A. Mamkin</a>
@@ -96,28 +176,13 @@ has created a driver to access <em>romfs</em> format
 filesystems under Windows NT/2000.  See his page for details.
 </p>
 
-<p>
-<a href="http://www.siliconpenguin.com/">SiliconPenguin.com</a>
-contains a directory of linux related embedded projects.
-</p>
-
-<p>
-Users of <em>romfs</em> apparently include:
-</p>
-
-<ul>
-<li><a href="http://www.uclinux.org/">uClinux</a>, which in turn is used by:
-  <ul>
-  <li><a href="http://www.lineo.com/">Lineo</a></li>
-  <li><a href="http://www.leox.org/">The LEOX team</a></li>
-  <li><a href="http://www.snapgear.com/">SnapGear</a></li>
-  <li><a href="http://www.microtronix.com/">Microtronix</a></li>
-  </ul>
-</li>
-<li>You?</li>
-</ul>
-
 <h1><a name="mirror" id="mirror" tabindex="5">Mirrors</a></h1>
+
+<p>
+Older releases of genromfs (0.1-0.3) are available at
+<a href="ftp://ftp.banki.hu/pub/Linux/local/">ftp://ftp.banki.hu/pub/Linux/local/</a>,
+the old distribution site.
+</p>
 
 <ul>
 <li><a href="files/">distribution mirrors</a></li>
@@ -138,8 +203,8 @@ romfs
 <span class="none"> | </span>
 <a href="http://validator.w3.org/check/referer"><img src="http://www.w3.org/Icons/valid-xhtml10" height="31" width="88" alt="Valid XHTML 1.0!" /></a>
 <br />
-$Date: 2002/01/22 20:22:47 $
-<span class="none"> | $Revision: 1.39 $ </span>
+$Date: 2002/01/23 08:15:41 $
+<span class="none"> | $Revision: 1.40 $ </span>
 </p>
 
 </body>
