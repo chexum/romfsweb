@@ -41,6 +41,8 @@ my %proto = (
 print $top;
 print "<body>\n";
 
+print "<p><em>romfs</em> related files available (currently only genromfs):</p>\n";
+
 print "<ul>\n";
 for my $k (@revs) {
   my ($v,$d)=split(/:/,$k);
