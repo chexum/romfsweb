@@ -35,8 +35,10 @@ h2 { font-size: larger }
 It is a block-based filesystem, that means it makes use of block
 (or sector)
 accessible storage driver (like disks, CDs, ROM drives).
-It is part of stock Linux kernels since about version 2.1.25.
-All 2.4 and 2.5 kernel sources contain support for <em>romfs</em>,
+It is part of stock Linux kernels since about
+version 2.1.21 (about January, 1997).
+All current (2.4 and 2.5) kernel sources
+contain support for <em>romfs</em>,
 but depending
 on the distributor, it might not have been compiled in.
 </p>
@@ -172,6 +174,15 @@ In turn, uClinux is used by the following projects and companies:
 </ul>
 
 <p>
+<a href="http://www.axis.com/">Axis</a> has developed an embedded
+CPU for Linux (no less!)
+called <a href="http://developer.axis.com/">ETRAX</a>.
+They also seem to have a modified <em>genromfs</em> in a
+different way to support including device nodes in the
+image.
+</p>
+
+<p>
 <a href="http://www.siliconpenguin.com/">SiliconPenguin.com</a>
 contains a directory of linux related embedded projects.
 </p>
@@ -230,6 +241,34 @@ the old distribution site.
 </li>
 </ul>
 
+<h2>romfs by any other name...</h2>
+
+<p>
+<a href="http://sources.redhat.com/ecos/">eCos</a> from Red Hat,
+is an embedded, unix-like, fully customizable operating system kernel,
+which seems to have a component called <em>ROMFS</em>, presumably
+to access ROMs available in specific architectures,
+but it's obviously different from the one in
+the Linux kernel.
+How different?  I just don't know.
+</p>
+
+<p>
+Acorn [no living link], now mostly famous for its
+ARM architecture,
+had some machines with <a href="http://www.riscos.com/">RISC OS</a>,
+which included a
+<em>ROMFS</em>
+(<a href=" http://www.mdfsnet.f9.co.uk/Docs/Comp/Filing/FSList">ROM filing system</a>)
+also,
+apparently a virtual filesystem
+to access ROMs of peripherals (podules?).
+Information is scarce, even
+at <a href="http://www.google.com/">Google</a>.
+The ARM range of processors was later bought by Intel,
+renamed to StrongARM, and finally XScale.
+</p>
+
 <hr />
 
 <p class="center">
@@ -239,8 +278,8 @@ romfs
 <span class="none"> | </span>
 <a href="http://validator.w3.org/check/referer"><img src="http://www.w3.org/Icons/valid-xhtml10" height="31" width="88" alt="Valid XHTML 1.0!" /></a>
 <br />
-$Date: 2002/01/28 18:00:22 $
-<span class="none"> | $Revision: 1.49 $ </span>
+$Date: 2002/01/30 18:25:50 $
+<span class="none"> | $Revision: 1.50 $ </span>
 </p>
 
 </body>
