@@ -78,9 +78,9 @@ files
 <a href="http://validator.w3.org/check/referer"><img src="http://www.w3.org/Icons/valid-xhtml10" height="31" width="88" alt="Valid XHTML 1.0!" /></a>
 <br />
 @;
-print "\$"."Date \$\n";
+print "\$"."Date\$\n";
 print "<span class=\"none\"> | ";
-print "\$"."Revision \$ </span>\n";
+print "\$"."Revision\$ </span>\n";
 print "</p>\n";
 
 print "</body>\n";
