@@ -46,7 +46,7 @@ print qq|
 <p>
 List of <em>romfs</em> related files follows below
 (currently only various versions of genromfs).
-All of it is free software, available under the terms of the
+This is free software, available under the terms of the
 <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a>.
 </p>
 |;
@@ -75,13 +75,16 @@ for my $k (@revs) {
         $all{$scheme} .= "<a href=\"$url\">$site</a>\n";
       }
     }
+    my $found=0;
     for my $p (sort keys %proto) {
       my ($line,$scheme,$site)=split(/:/,$p);
       if ($all{$scheme}) {
+        $found++;
         print "  <li> via $scheme\n$all{$scheme}</li>\n";
         delete $all{$scheme};
       }
     }
+    print "    <li>(no live mirror found)</li>\n" unless $found;
     print "  </ul>\n";
     print "  </li>\n";
   }
