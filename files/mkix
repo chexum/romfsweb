@@ -17,20 +17,22 @@ h1 { font-size: larger }
 </head>
 @;
 
-my @revs=("0.5.1:2002-01-22","0.5:2002-01-20");
+my @revs=("0.5.1:2002-01-22","0.5:2002-01-20","0.3:1998-09-22");
 my %files = (
   "0.5.1" => ["genromfs-0.5.1.tar.gz"],
   "0.5" => ["genromfs-0.5.tar.gz"],
+  "0.3" => ["genromfs-0.3.tar.gz"],
 );
 my %hashes = (
   "genromfs-0.5.1.tar.gz" => "fee69ecbf8f990fdb0ca0c7267c13e7e",
   "genromfs-0.5.tar.gz" => "d89a41211b4a43e2d0c5826c2a6201e3",
+  "genromfs-0.3.tar.gz" => "1b7e1adf1123395e34f7e6a37801b38c",
 );
 my %proto = (
-  "00:HTTP:SourceForge"=>"http://prdownloads.sourceforge.net/romfs/",
-  "01:HTTP:ACOMP"=>"http://www.acomp.hu/romfs/files/",
-  "05:HTTP:Telia/SF"=>"http://telia.dl.sourceforge.net/romfs/",
-  "10:FTP:SourceForge"=>"ftp://ftp1.sourceforge.net/pub/sourceforge/romfs/",
+  "00:HTTP:SourceForge:0.5:0.5.1"=>"http://prdownloads.sourceforge.net/romfs/",
+  "01:HTTP:ACOMP:0.5:0.5.1"=>"http://www.acomp.hu/romfs/files/",
+  "05:HTTP:Telia/SF:0.5:0.5.1"=>"http://telia.dl.sourceforge.net/romfs/",
+  "10:FTP:SourceForge:0.5:0.5.1"=>"ftp://ftp1.sourceforge.net/pub/sourceforge/romfs/",
   "11:FTP:Banki"=>"ftp://ftp.banki.hu/pub/Linux/local/",
   "12:FTP:ibiblio:0.5.1"=>"ftp://ftp.ibiblio.org/pub/Linux/system/recovery/",
 );
@@ -50,16 +52,16 @@ for my $k (@revs) {
     my %all=();
     for my $p (sort keys %proto) {
       # XXX: split
-      my ($line,$scheme,$site,$vonly)=split(/:/,$p);
-      if (!$vonly || $vonly eq $v) {
+      my ($line,$scheme,$site,$vonly)=split(/:/,$p,4);
+      if (!$vonly || ":$vonly:" =~ /:$v:/) {
         $url=$proto{$p}.$f;
-        $all{$scheme} .= " <a href=\"$url\">$site</a>";
+        $all{$scheme} .= "<a href=\"$url\">$site</a>\n";
       }
     }
     for my $p (sort keys %proto) {
       my ($line,$scheme,$site)=split(/:/,$p);
       if ($all{$scheme}) {
-        print "  <li> via $scheme$all{$scheme}</li>\n";
+        print "  <li> via $scheme\n$all{$scheme}</li>\n";
         delete $all{$scheme};
       }
     }
