@@ -24,8 +24,8 @@ my %files = (
   "0.3" => ["genromfs-0.3.tar.gz"],
 );
 my %hashes = (
-  "genromfs-0.5.1.tar.gz" => "fee69ecbf8f990fdb0ca0c7267c13e7e",
-  "genromfs-0.5.tar.gz" => "d89a41211b4a43e2d0c5826c2a6201e3",
+  "genromfs-0.5.1.tar.gz" => "fee69ecbf8f990fdb0ca0c7267c13e7e:20k",
+  "genromfs-0.5.tar.gz" => "d89a41211b4a43e2d0c5826c2a6201e3:20k",
   "genromfs-0.3.tar.gz" => "1b7e1adf1123395e34f7e6a37801b38c",
 );
 my %proto = (
@@ -48,7 +48,13 @@ for my $k (@revs) {
   print "  <ul>\n";
   for my $f (@{$files{$v}}) {
     my $h = $hashes{$f};
-    print "  <li>$f (MD5: $h)\n";
+    my ($md5,$size)=split(/:/,$h);
+    print "  <li>$f";
+    my (@attrs)=();
+    if ($size) { push @attrs,"$size" }
+    if ($md5) { push @attrs,"MD5: $md5" }
+    if (@attrs) { print " (".join(", ",@attrs).")"; }
+    print "\n";
     print "  <ul>\n";
     my %all=();
     for my $p (sort keys %proto) {
