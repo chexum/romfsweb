@@ -32,6 +32,7 @@ my %proto = (
   "00:HTTP:SourceForge:0.5:0.5.1"=>"http://prdownloads.sourceforge.net/romfs/",
   "01:HTTP:ACOMP:0.5:0.5.1"=>"http://www.acomp.hu/romfs/files/",
   "05:HTTP:Telia/SF:0.5:0.5.1"=>"http://telia.dl.sourceforge.net/romfs/",
+  "02:HTTP:ibiblio:0.5.1"=>"http://www.ibiblio.org/pub/Linux/system/recovery/",
   "10:FTP:SourceForge:0.5:0.5.1"=>"ftp://ftp1.sourceforge.net/pub/sourceforge/romfs/",
   "11:FTP:Banki"=>"ftp://ftp.banki.hu/pub/Linux/local/",
   "12:FTP:ibiblio:0.5.1"=>"ftp://ftp.ibiblio.org/pub/Linux/system/recovery/",
