@@ -25,7 +25,6 @@ my %files = (
 my %hashes = (
   "genromfs-0.5.1.tar.gz" => "fee69ecbf8f990fdb0ca0c7267c13e7e",
   "genromfs-0.5.tar.gz" => "d89a41211b4a43e2d0c5826c2a6201e3",
-  "test05" => "INVALID",
 );
 my %proto = (
   "00:HTTP:SourceForge"=>"http://prdownloads.sourceforge.net/romfs/",
@@ -33,6 +32,7 @@ my %proto = (
   "05:HTTP:Telia/SF"=>"http://telia.dl.sourceforge.net/romfs/",
   "10:FTP:SourceForge"=>"ftp://ftp1.sourceforge.net/pub/sourceforge/romfs/",
   "11:FTP:Banki"=>"ftp://ftp.banki.hu/pub/Linux/local/",
+  "12:FTP:ibiblio:0.5.1"=>"ftp://ftp.ibiblio.org/pub/Linux/system/recovery/",
 );
 
 print $top;
@@ -49,9 +49,12 @@ for my $k (@revs) {
     print "  <ul>\n";
     my %all=();
     for my $p (sort keys %proto) {
-      my ($line,$scheme,$site)=split(/:/,$p);
-      $url=$proto{$p}.$f;
-      $all{$scheme} .= " <a href=\"$url\">$site</a>";
+      # XXX: split
+      my ($line,$scheme,$site,$vonly)=split(/:/,$p);
+      if (!$vonly || $vonly eq $v) {
+        $url=$proto{$p}.$f;
+        $all{$scheme} .= " <a href=\"$url\">$site</a>";
+      }
     }
     for my $p (sort keys %proto) {
       my ($line,$scheme,$site)=split(/:/,$p);
