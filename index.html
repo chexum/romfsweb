@@ -16,20 +16,28 @@ hr { width: 70%; margin-left: auto; margin-right: auto }
 
 <body>
 
+<h2>What is romfs?</h2>
+
 <p>
 <em>romfs</em> is a space-efficient, small, read-only filesystem for
 <a href="http://www.linux.org/">Linux</a> and some Linux based projects.
+It is a block-based filesystem, that means it makes use of block
+(or sector)
+accessible storage driver (like disks, CDs, ROM drives).
 It is part of stock Linux kernels since about the version 2.1.25.
 All 2.4 and 2.5 kernel sources contain support for <em>romfs</em>,
 but depending
-on the distributor, it might not been compiled in.
+on the distributor, it might not have been compiled in.
 </p>
 
 <p>
-Since <em>romfs</em> is read only, you can't simply copy files to it,
+Since <em>romfs</em> is read only, you can't simply copy files to
+a directory under it,
 you must use the program <em>genromfs</em> to generate an image,
-which then can be mounted.
+which then should be copied to a media, and then it can be mounted.
 </p>
+
+<h2>Development</h2>
 
 <p>
 Development pages at <a href="http://sourceforge.net/">SourceForge</a>:
@@ -46,9 +54,25 @@ Development pages at <a href="http://sourceforge.net/">SourceForge</a>:
 <li><a href="http://sourceforge.net/cvs/?group_id=2320">CVS tree</a></li>
 </ul>
 
+<h2>Interesting links</h2>
+
 <p>
 Older releases of genromfs (0.1-0.3) are available at
 <a href="ftp://ftp.banki.hu/pub/Linux/local/">ftp://ftp.banki.hu/pub/Linux/local/</a>.
+</p>
+
+<p>
+<a href="http://www.sinor.ru:8100/~mavir/">Vitaly A. Mamkin</a>
+created a <em>romfs</em> driver to be used under
+RTEMS.
+It is available at
+<a href="http://www.sinor.ru:8100/~mavir/soft/soft.html">http://www.sinor.ru:8100/~mavir/soft/soft.html</a>.
+</p>
+
+<p>
+<a href="http://www.acc.umu.se/~bosse/">Bo Branten</a>
+has created a filesystem driver to access <em>romfs</em> format
+filesystems from Windows NT...  See his page for details.
 </p>
 
 <hr />
