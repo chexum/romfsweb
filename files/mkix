@@ -41,7 +41,14 @@ my %proto = (
 print $top;
 print "<body>\n";
 
-print "<p><em>romfs</em> related files available (currently only genromfs):</p>\n";
+print qq|
+<p>
+List of <em>romfs</em> related files follows below
+(currently only various versions of genromfs).
+All of it is free software, available under the terms of the
+<a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a>.
+</p>
+|;
 
 print "<ul>\n";
 for my $k (@revs) {
