@@ -17,23 +17,25 @@ h1 { font-size: larger }
 </head>
 @;
 
-my @revs=("0.5.1:2002-01-22","0.5:2002-01-20","0.3:1998-09-22");
+my @revs=("0.5.2:2007-06-26","0.5.1:2002-01-22","0.5:2002-01-20","0.3:1998-09-22");
 my %files = (
+  "0.5.2" => ["genromfs-0.5.2.tar.gz"],
   "0.5.1" => ["genromfs-0.5.1.tar.gz"],
   "0.5" => ["genromfs-0.5.tar.gz"],
   "0.3" => ["genromfs-0.3.tar.gz"],
 );
 my %hashes = (
+  "genromfs-0.5.2.tar.gz" => "2a91463c56f9e042edc330c063a0cf5a:24k",
   "genromfs-0.5.1.tar.gz" => "fee69ecbf8f990fdb0ca0c7267c13e7e:20k",
   "genromfs-0.5.tar.gz" => "d89a41211b4a43e2d0c5826c2a6201e3:20k",
   "genromfs-0.3.tar.gz" => "1b7e1adf1123395e34f7e6a37801b38c",
 );
 my %proto = (
-  "10:HTTP:(SourceForge):0.5:0.5.1"=>"http://downloads.sourceforge.net/romfs/",
-  "01:HTTP:ACOMP:0.5:0.5.1"=>"http://www.acomp.hu/romfs/files/",
+  "10:HTTP:(SourceForge):0.5:0.5.1:0.5.2"=>"http://downloads.sourceforge.net/romfs/",
+  "01:HTTP:ACOMP:0.5:0.5.1:0.5.2"=>"http://www.acomp.hu/romfs/files/",
   "02:HTTP:ibiblio:0.5.1"=>"http://www.ibiblio.org/pub/Linux/system/recovery/",
-  "05:HTTP:Mesh/SF:0.5:0.5.1"=>"http://mesh.dl.sourceforge.net/romfs/",
-  "05:HTTP:OSDN/SF:0.5:0.5.1"=>"http://osdn.dl.sourceforge.net/romfs/",
+  "05:HTTP:Mesh/SF:0.5:0.5.1:0.5.2"=>"http://mesh.dl.sourceforge.net/romfs/",
+  "05:HTTP:OSDN/SF:0.5:0.5.1:0.5.2"=>"http://osdn.dl.sourceforge.net/romfs/",
 # "10:FTP:SourceForge:0.5:0.5.1"=>"ftp://ftp1.sourceforge.net/pub/sourceforge/romfs/",
 # "11:FTP:Banki"=>"ftp://ftp.banki.hu/pub/Linux/local/",
   "12:FTP:ibiblio:0.5.1"=>"ftp://ftp.ibiblio.org/pub/Linux/system/recovery/",
