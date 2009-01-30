@@ -1,4 +1,7 @@
 #!/usr/bin/perl -w
+
+use POSIX qw(strftime);
+
 my $top=qq@<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -25,10 +28,10 @@ my %files = (
   "0.3" => ["genromfs-0.3.tar.gz"],
 );
 my %hashes = (
-  "genromfs-0.5.2.tar.gz" => "2a91463c56f9e042edc330c063a0cf5a:24k",
-  "genromfs-0.5.1.tar.gz" => "fee69ecbf8f990fdb0ca0c7267c13e7e:20k",
-  "genromfs-0.5.tar.gz" => "d89a41211b4a43e2d0c5826c2a6201e3:20k",
-  "genromfs-0.3.tar.gz" => "1b7e1adf1123395e34f7e6a37801b38c",
+  "genromfs-0.5.2.tar.gz" => "2a91463c56f9e042edc330c063a0cf5a:21069:200706271708.47",
+  "genromfs-0.5.1.tar.gz" => "fee69ecbf8f990fdb0ca0c7267c13e7e:20543:200201220912.38",
+  "genromfs-0.5.tar.gz" => "d89a41211b4a43e2d0c5826c2a6201e3:20064:200201201108.20",
+  "genromfs-0.3.tar.gz" => "1b7e1adf1123395e34f7e6a37801b38c:17510:199809221642.00",
 );
 my %proto = (
   "10:HTTP:(SourceForge):0.5:0.5.1:0.5.2"=>"http://downloads.sourceforge.net/romfs/",
@@ -60,11 +63,14 @@ for my $k (@revs) {
   print "  <ul>\n";
   for my $f (@{$files{$v}}) {
     my $h = $hashes{$f};
-    my ($md5,$size)=split(/:/,$h);
+    my ($md5,$size,$stamp)=split(/:/,$h);
     print "  <li>$f";
     my (@attrs)=();
-    if ($size) { push @attrs,"$size" }
+    if ($size) { push @attrs,sprintf("%dK",$size/1000) }
     if ($md5) { push @attrs,"MD5: $md5" }
+    if ($stamp && -f $f) {
+      system("TZ=UTC touch -t $stamp $f");
+    }
     if (@attrs) { print " (".join(", ",@attrs).")"; }
     print "\n";
     print "  <ul>\n";
@@ -105,11 +111,10 @@ files
 <a href="http://validator.w3.org/check/referer"><img src="http://www.w3.org/Icons/valid-xhtml10" height="31" width="88" alt="Valid XHTML 1.0!" /></a>
 <br />
 @;
-print "\$"."Date\$\n";
-print "<span class=\"none\"> | ";
-print "\$"."Revision\$ </span>\n";
+print strftime("%Y-%m-%d %H:%M:%SZ",gmtime);
 
-print qq@<br />
+print qq@
+<br />
 <a href="http://www.google.com">Google</a> *
 <a href="http://anti-dmca.org/">DMCA</a> *
 <a href="http://www.xenu.net/">Scientology</a> *
